@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-    @GetMapping("/b")
+    @GetMapping("/")
     public String hello() {
         return "Hello from Blackrock Spring Boot!";
     }
