@@ -16,7 +16,7 @@ public class TransactionsParsingController {
     @Autowired
     private ParsingService parsingService;
 
-    @PostMapping("/blackrock/challenge/v1/transactions:parser")
+    @PostMapping("/blackrock/challenge/v1/transactions:parse")
     public List<Transaction> parseTransactions(List<Expense> expenses) {
         List<Transaction> transactions = parsingService.parseExpensesToTransactions(expenses);
         return transactions;

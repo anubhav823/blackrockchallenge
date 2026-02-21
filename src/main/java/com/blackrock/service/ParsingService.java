@@ -12,9 +12,20 @@ import com.blackrock.pojo.Transaction;
 public class ParsingService {
 
     public List<Transaction> parseExpensesToTransactions(List<Expense> expenses) {
-        // Implement JSON parsing logic here, e.g., using Jackson or Gson
-        // For simplicity, returning an empty list for now
-        return new ArrayList<>();
+        List<Transaction> transactions = new ArrayList<>();
+        for (Expense expense : expenses) {
+            Transaction transaction = new Transaction();
+            transaction.setDate(expense.getDate());
+            int multiplier = (int) (expense.getAmount() / 100);
+            if (multiplier == 0) {
+                multiplier = 1;
+            }
+            transaction.setAmount(expense.getAmount());
+            transaction.setCeiling(multiplier * 100);
+            transaction.setRemanent(multiplier * 100 - expense.getAmount());
+            transactions.add(transaction);
+        } 
+        return transactions;
     }
     
 }
